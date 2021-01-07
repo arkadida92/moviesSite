@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 18px;
+            background-color: white;
+        }
+
+        .float {
+            position: fixed;
+            width: 82px;
+            height: 82px;
+            bottom: 40px;
+            right: 40px;
+            background-color: rgb(160, 5, 5);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 2px 2px 3px #999;
+        }
+
+
+        #moviesResults {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #moviesResults td,
+        #moviesResults th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #moviesResults tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #moviesResults tr:hover {
+            background-color: #ddd;
+        }
+
+        #moviesResults th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="moviesResults">
+        <tr>
+            <th>Movie Name</th>
+            <th>More movies with same distinct genres</th>
+
+        </tr>
+        <% moviesData.forEach(movieData => { %>
+        <tr>
+            <td><a href="/movieData/<%= movieData.movie.id %>"><%= movieData.movie.name %></a></td>
+            <td>
+                <ul>
+                    <% movieData.sameGenresMovies.forEach(movie => { %>
+                    <li><a href="/movieData/<%= movie.id %>"><%= movie.name %></a></li>
+                    <% }) %>
+                </ul>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+    <a href="/searchMovies" class="float">
+        <i><br />back to search</i>
+
+    </a>
+</body>
+
+</html>

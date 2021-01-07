@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<style>
+    body {
+        font-family: Arial;
+    }
+
+    input[type=text],
+    select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    input[type=button] {
+        width: 100%;
+        background-color: red;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=button]:hover {
+        background-color: rgb(112, 5, 5);
+    }
+
+    div.container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+</style>
+
+<body>
+
+    <h3>Add new movie</h3>
+
+    <div class="container">
+        <form action="/addingMovie" method="GET">
+            <label for="mname">Movie Name</label>
+            <input type="text" id="mname" name="mname" placeholder="Movie name..." required>
+
+            <label for="language">Language</label>
+            <select id="language" name="language" required>
+                <% languages.forEach(language => { %>
+                <option><%= language %></option>
+                <% }) %>
+            </select>
+
+
+            <label for="genres">Genres</label>
+            <p style="font-size: x-small; font-weight: bold;">
+                Hold down the control(Windows)/command(Mac) button to
+                select multiple options
+            </p>
+            <select id="genres" name="genres" multiple required>
+                <% genres.forEach(genre => { %>
+                <option><%= genre %></option>
+                <% }) %>
+            </select>
+
+            <input type="submit" value="Add">
+            <input type="button" onclick="window.history.back()" value="Back">
+        </form>
+    </div>
+
+</body>
+
+</html>

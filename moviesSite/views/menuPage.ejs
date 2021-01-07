@@ -1,0 +1,77 @@
+<!Doctype html>
+<html>
+<style>
+    h1 {
+        text-align: center;
+    }
+
+    .center {
+        margin: auto;
+        width: 60%;
+        border: 3px solid #73AD21;
+        padding: 10px;
+    }
+
+    .btn-group button {
+        display: flex;
+        align-items: center;
+        background-color: #4CAF50;
+        /* Green background */
+        border: 1px solid green;
+        /* Green border */
+        color: white;
+        /* White text */
+        padding: 10px 24px;
+        /* Some padding */
+        cursor: pointer;
+        /* Pointer/hand icon */
+        width: 100%;
+        padding: 10%;
+        /* Set a width if needed */
+        display: block;
+        /* Make the buttons appear below each other */
+    }
+
+    .btn-group button:not(:last-child) {
+        border-bottom: none;
+        /* Prevent double borders */
+    }
+
+    /* Add a background color on hover */
+    .btn-group button:hover {
+        background-color: #3e8e41;
+    }
+</style>
+
+<body class="root">
+
+    <h1>Menu</h1>
+    <div class="center">
+        <div class="btn-group">
+            <button id="moviesSearchBtn">Search for movies</button>
+            <button id="createMovieBtn">Create new movie</button>
+            <% if(isAdmin) { %>
+            <button id="usersManagementBtn">Edit Users</button>
+            <% } else { %>
+            <button style="background-color: gray;" id="usersManagementBtn" disabled='true'>Edit Users -
+                Disabled</button>
+            <% } %>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        document.getElementById("moviesSearchBtn").onclick = function () {
+            location.href = "/searchMovies";
+        };
+
+        document.getElementById("createMovieBtn").onclick = function () {
+            location.href = "/createMovie";
+        };
+
+        document.getElementById("usersManagementBtn").onclick = function () {
+            location.href = "/usersManagement";
+        };
+    </script>
+</body>
+
+</html>

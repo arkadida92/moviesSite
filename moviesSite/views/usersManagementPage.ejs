@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* * {
+            padding: 0;
+            margin: 0;
+        } */
+
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 18px;
+            background-color: white;
+        }
+
+        .float {
+            position: fixed;
+            width: 82px;
+            height: 82px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #0C9;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 2px 2px 3px #999;
+        }
+
+
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+        button:hover,
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* div.gallery {
+            border: 1px solid #ccc;
+        }
+
+        div.gallery:hover {
+            border: 1px solid #777;
+        } */
+
+        div.gallery img {
+            width: 100%;
+            height: auto;
+        }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .responsive {
+            padding: 0 6px;
+            float: left;
+            width: 24.99999%;
+        }
+
+        @media only screen and (max-width: 700px) {
+            .responsive {
+                width: 49.99999%;
+                margin: 6px 0;
+            }
+        }
+
+        @media only screen and (max-width: 500px) {
+            .responsive {
+                width: 100%;
+            }
+        }
+
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+
+    <!-- Code begins here -->
+    <h1>Users Managament
+        <a href="/menu">
+            <button style="background-color: rgb(145, 5, 5)">
+                Back to menu
+            </button>
+        </a>
+    </h1>
+
+    <% users.forEach(user => { %>
+    <div class="responsive">
+        <div class="gallery">
+            <div class="card">
+                <img src="/images/userProfileIcon.png" alt="" style="width:100%">
+                <h1><%= user.username %></h1>
+                <p class="title">Created At: <br /> <%= user.createdAt %></p>
+                <p>Number of transactions: <%= user.numOfTransactions %></p>
+
+                <p><a href="/userData/<%= user.id %>"><button>Update</button></a>
+                    <a href="/deleteUser/<%= user.id %>"><button style="background-color: red;">Delete</button></a></p>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+
+    <a href="/userData/0" class="float">
+        <i class="my-float"><br />+</i>
+    </a>
+</body>
+
+</html>
